@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube Solver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rubik's Cube Solver</h1>
+        
+        <div class="color-palette">
+            <div class="color red" data-color="red"></div>
+            <div class="color white" data-color="white"></div>
+            <div class="color blue" data-color="blue"></div>
+            <div class="color orange" data-color="orange"></div>
+            <div class="color green" data-color="green"></div>
+            <div class="color yellow" data-color="yellow"></div>
+            <div class="color selected" data-color=""></div>
+        </div>
+        
+        <div class="cube-container">
+            <div class="cube-face up">
+                <div class="cube-row">
+                    <div class="cube-piece" data-position="U1"></div>
+                    <div class="cube-piece" data-position="U2"></div>
+                    <div class="cube-piece" data-position="U3"></div>
+                </div>
+                <div class="cube-row">
+                    <div class="cube-piece" data-position="U4"></div>
+                    <div class="cube-piece" data-position="U5"></div>
+                    <div class="cube-piece" data-position="U6"></div>
+                </div>
+                <div class="cube-row">
+                    <div class="cube-piece" data-position="U7"></div>
+                    <div class="cube-piece" data-position="U8"></div>
+                    <div class="cube-piece" data-position="U9"></div>
+                </div>
+            </div>
+            
+            <div class="middle-row">
+                <div class="cube-face left">
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="L1"></div>
+                        <div class="cube-piece" data-position="L2"></div>
+                        <div class="cube-piece" data-position="L3"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="L4"></div>
+                        <div class="cube-piece" data-position="L5"></div>
+                        <div class="cube-piece" data-position="L6"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="L7"></div>
+                        <div class="cube-piece" data-position="L8"></div>
+                        <div class="cube-piece" data-position="L9"></div>
+                    </div>
+                </div>
+                
+                <div class="cube-face front">
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="F1"></div>
+                        <div class="cube-piece" data-position="F2"></div>
+                        <div class="cube-piece" data-position="F3"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="F4"></div>
+                        <div class="cube-piece" data-position="F5"></div>
+                        <div class="cube-piece" data-position="F6"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="F7"></div>
+                        <div class="cube-piece" data-position="F8"></div>
+                        <div class="cube-piece" data-position="F9"></div>
+                    </div>
+                </div>
+                
+                <div class="cube-face right">
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="R1"></div>
+                        <div class="cube-piece" data-position="R2"></div>
+                        <div class="cube-piece" data-position="R3"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="R4"></div>
+                        <div class="cube-piece" data-position="R5"></div>
+                        <div class="cube-piece" data-position="R6"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="R7"></div>
+                        <div class="cube-piece" data-position="R8"></div>
+                        <div class="cube-piece" data-position="R9"></div>
+                    </div>
+                </div>
+                
+                <div class="cube-face back">
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="B1"></div>
+                        <div class="cube-piece" data-position="B2"></div>
+                        <div class="cube-piece" data-position="B3"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="B4"></div>
+                        <div class="cube-piece" data-position="B5"></div>
+                        <div class="cube-piece" data-position="B6"></div>
+                    </div>
+                    <div class="cube-row">
+                        <div class="cube-piece" data-position="B7"></div>
+                        <div class="cube-piece" data-position="B8"></div>
+                        <div class="cube-piece" data-position="B9"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cube-face down">
+                <div class="cube-row">
+                    <div class="cube-piece" data-position="D1"></div>
+                    <div class="cube-piece" data-position="D2"></div>
+                    <div class="cube-piece" data-position="D3"></div>
+                </div>
+                <div class="cube-row">
+                    <div class="cube-piece" data-position="D4"></div>
+                    <div class="cube-piece" data-position="D5"></div>
+                    <div class="cube-piece" data-position="D6"></div>
+                </div>
+                <div class="cube-row">
+                    <div class="cube-piece" data-position="D7"></div>
+                    <div class="cube-piece" data-position="D8"></div>
+                    <div class="cube-piece" data-position="D9"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="solve-btn">Solve Cube</button>
+            <button id="reset-btn">Reset Cube</button>
+            <button id="scramble-btn">Scramble Cube</button>
+        </div>
+        
+        <div class="solution-container">
+            <h2>Solution</h2>
+            <div id="solution-steps"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
